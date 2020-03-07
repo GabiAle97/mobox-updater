@@ -22,6 +22,7 @@ int solution (int A[], int B[], int N, int C[], int M){
     int lengthTable = N;
     int lengthNails = M;
     int i;
+    printf("\n\n");
     for (i=0; i<=lengthTable-1; i++){
         printf("Ingrese el inicio de la tabla %d: ", i+1);
         scanf("%d",&A[i]);
@@ -54,29 +55,34 @@ int solution (int A[], int B[], int N, int C[], int M){
     if(posible == 1){
         int statusT[100];
         int statusC[100];
-        for (k=0; k<=lengthTable-1; k++){
-            for (i=0; i<=lengthNails-1; i++){
-                if (C[i]>=A[k] && C[i]<=B[k]){
-                    statusT[k] = 1;
-                    statusC[i] = 1;
-                    counter++;
-                    i= lengthNails+1;
+        int m;
+        for (m=0;m<=lengthTable-1;m++){
+            statusT[m]=0;
+        }
+        for (m=0;m<=lengthNails-1;m++){
+            statusC[m]=0;
+        }
+        for (k=0; k<=lengthNails-1; k++){
+            for (i=0; i<=lengthTable-1; i++){
+                if (C[k]>=A[i] && C[k]<=B[i]){
+                    statusT[i] = 1;
                 }
             }
+            statusC[k] = 1;
+            counter++;
+            i= lengthNails+1;
             int l;
-            for (l=0;l<lengthTable-1;l++){
+            for (l=0;l<lengthTable;l++){
                 if (statusT[l]==1){
                     over++;
                 }
             }
             if (over==lengthTable){
-                i=lengthNails+1;
-                k=lengthTable+1;
+                return counter;
             }else{
                 over=0;
             }
         }
-        return counter;
     }else{
         return -1;
     }

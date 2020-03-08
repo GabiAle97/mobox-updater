@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
-//Declaración de la funcion Solution, que recibe 3 arreglos no vacios de indice 0, y 2 enteros mayores a 0
+//Declaraciï¿½n de la funcion Solution, que recibe 3 arreglos no vacios de indice 0, y 2 enteros mayores a 0
 int solution (int [], int [], int, int [], int);
 
 void main(){
     int N,M;
-    printf("Cuantas tablas se deben clavar? ");
+    printf("Cu%cntas tablas se deben clavar? ",160);
     scanf("%d",&N);
     fflush(stdin);
-    printf("\nCuantos clavos estan disponibles? ");
+    printf("\nCu%cntos clavos est%cn disponibles? ",160,160);
     scanf("%d",&M);
     fflush(stdin);
     int A[100],B[100],C[100];
@@ -31,7 +31,7 @@ int solution (int A[], int B[], int N, int C[], int M){
         fflush(stdin);
         //Se verifica qie A[i] es un entero mayor a 0, asumiendo que se ingresa un entero
         while (A[i]<1){
-            printf("Valor inválido. Ingreselo nuevamente: ");
+            printf("Valor inv%clido. Ingreselo nuevamente: ",160);
             scanf("%d",&A[i]);
             fflush(stdin);
         }
@@ -40,17 +40,17 @@ int solution (int A[], int B[], int N, int C[], int M){
         fflush(stdin);
         //Se verifica qie A[i] es un entero mayor a 0 y mayor o igual a A[i], asumiendo que se ingresa un entero
         while (B[i]<1 || B[i]<=A[i]){
-            printf("Valor inválido. Ingreselo nuevamente: ");
+            printf("Valor inv%clido. Ingreselo nuevamente: ",160);
             scanf("%d",&B[i]);
             fflush(stdin);
         }
     }
     //Llenado del arreglo C (Clavos) con enteros mayores a 0
     for (i=0; i<=lengthNails-1; i++){
-        printf("Ingrese posicion del clavo %d: ", i+1);
+        printf("Ingrese posici%cn del clavo %d: ", 162, i+1);
         scanf("%d",&C[i]);
         fflush(stdin);
-        //Se obtiene el rango de los tablones (el valor más alto de B, y el valor más bajo de A)
+        //Se obtiene el rango de los tablones (el valor mï¿½s alto de B, y el valor mï¿½s bajo de A)
         int mayor, menor;
         mayor = B[0];
         menor = A[0];
@@ -65,14 +65,14 @@ int solution (int A[], int B[], int N, int C[], int M){
         }
         //Se verifica qie C[i] es un entero mayor a 0 y posible dentro del rango de tablones, asumiendo que se ingresa un entero
         while (C[i]<1 || C[i]<menor || C[i]>mayor){
-            printf("Valor inválido. Ingreselo nuevamente: ");
+            printf("Valor inv%clido. Ingreselo nuevamente: ",160);
             scanf("%d",&C[i]);
             fflush(stdin);
         }
         //Se verifica qie C[i] no se repita
         for (x=0; x<lengthNails; x++){
             if(C[x]==C[i] && x!=i){
-                printf("Valor inválido. Ingreselo nuevamente: ");
+                printf("Valor inv%clido. Ingreselo nuevamente: ",160);
                 scanf("%d",&C[i]);
                 fflush(stdin);
                 break;
@@ -84,13 +84,13 @@ int solution (int A[], int B[], int N, int C[], int M){
     //Se verifica que sea posible clavar todos los tablones
     for (i=0; i<=lengthTable-1; i++){
         for (k=0; k<=lengthNails-1; k++){
-            //Si existe un clavo que clave el tablón actual, aumenta un contador
+            //Si existe un clavo que clave el tablï¿½n actual, aumenta un contador
             if (C[k]>=A[i] && C[k]<=B[i]){
                 count++;
             }
         }
-        //Si el contador no aumentó, significa que para el tablón actual no existe clavo que pueda clavarse.
-        //Caso contrario, se reinicia el contador y continua el bucle con el siguiente tablón
+        //Si el contador no aumentï¿½, significa que para el tablï¿½n actual no existe clavo que pueda clavarse.
+        //Caso contrario, se reinicia el contador y continua el bucle con el siguiente tablï¿½n
         if (count==0){
             posible = 0;
             i=lengthTable;
@@ -99,7 +99,7 @@ int solution (int A[], int B[], int N, int C[], int M){
         }
     }
     int over=0, counter=0;
-    //En caso de ser posible clavar todos los tablones, se verifica la cantidad minima de clavos secuenciales que se necesita para dicha acción
+    //En caso de ser posible clavar todos los tablones, se verifica la cantidad minima de clavos secuenciales que se necesita para dicha acciï¿½n
     if(posible == 1){
         int statusT[100];
         int m;
@@ -110,21 +110,21 @@ int solution (int A[], int B[], int N, int C[], int M){
         //Se verifica en orden cada clavo, y las tablas que clava el mismo
         for (k=0; k<=lengthNails-1; k++){
             for (i=0; i<=lengthTable-1; i++){
-                //Si el clavo actual está dentro del rango de la tabla actual, se le asigna el estado 1 a statusT[i] (tabla "i" clavada)
+                //Si el clavo actual estï¿½ dentro del rango de la tabla actual, se le asigna el estado 1 a statusT[i] (tabla "i" clavada)
                 if (C[k]>=A[i] && C[k]<=B[i]){
                     statusT[i] = 1;
                 }
             }
-            //El contador de pasos aumenta, ya que se clavó un clavo
+            //El contador de pasos aumenta, ya que se clavï¿½ un clavo
             counter++;
             int l;
-            //se verifica que todos los tablones estén clavados. En ese caso, "over" valdra lo mismo que la cantidad de tablones
+            //se verifica que todos los tablones estï¿½n clavados. En ese caso, "over" valdra lo mismo que la cantidad de tablones
             for (l=0;l<lengthTable;l++){
                 if (statusT[l]==1){
                     over++;
                 }
             }
-            //Si "over" vale lo mismo que la cantidad de tablones, se finaliza la función, pues ya fueron todas las tablas clavadas
+            //Si "over" vale lo mismo que la cantidad de tablones, se finaliza la funciï¿½n, pues ya fueron todas las tablas clavadas
             if (over==lengthTable){
                 //la funcion retorna el valor del contador de pasos
                 return counter;

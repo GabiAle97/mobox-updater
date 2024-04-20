@@ -32,9 +32,9 @@ Script to update:
   - Resident Evil Village:
   
 ## Thanks to:
-  Ilya (https://github.com/Ilya114) for Box64 build
-  Airidosas (https://github.com/airidosas252) for Turnip
-  HansKristian (https://github.com/HansKristian-Work) for VKD3D
-  Doitsujin (https://github.com/doitsujin) for DXVK
-  A Z (https://github.com/ahmad1abbadi) for some ideas from DarkOS
-  Olegos (https://github.com/olegos2) for some ideas and for the basis
+  - Ilya (https://github.com/Ilya114) for Box64 build
+  - Airidosas (https://github.com/airidosas252) for Turnip
+  - HansKristian (https://github.com/HansKristian-Work) for VKD3D
+  - Doitsujin (https://github.com/doitsujin) for DXVK
+  - A Z (https://github.com/ahmad1abbadi) for some ideas from DarkOS
+  - Olegos (https://github.com/olegos2) for some ideas and for the basis

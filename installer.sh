@@ -2,9 +2,7 @@
 
 apt update -y
 pkg install glibc-repo -y
-pkg install mangohud-glibc -y <<-EOF
-        y
-EOF
+pkg install mangohud-glibc -y 
 pkg install libxcb* -y
 pkg install xorgproto* -y
 
@@ -92,21 +90,21 @@ if [ ! -f storage/downloads/already-seen ]; then
         sleep 4
         echo -e "Peeeero hice un backup con los archivos originales para que puedas restaurarlos \xF0\x9F\x98\x80"
         sleep 4
-        echo -e "Corriendo \e[1mundo_updater_changes\e[0m debería volver todo a la normalidad"
+        echo -e "Corriendo \e[1mundo_updater_changes\e[0m deberÃ­a volver todo a la normalidad"
         sleep 4
-        echo -e "De todos modos, puedes avisarme en \e]8;;https://github.com/GabiAle97/mobox-updater/issues\aesta página\e]8;;\a para que pueda tomar acciones \xF0\x9F\x98\x80"
+        echo -e "De todos modos, puedes avisarme en \e]8;;https://github.com/GabiAle97/mobox-updater/issues\aesta pÃ¡gina\e]8;;\a para que pueda tomar acciones \xF0\x9F\x98\x80"
         sleep 4
-        echo -e "Ahora deberías salir de termux con \e[1mexit\e[0m y volver a entrar para que las variables se carguen" 
+        echo -e "Ahora deberÃ­as salir de termux con \e[1mexit\e[0m y volver a entrar para que las variables se carguen" 
         sleep 4
         echo -e "Me despido! Pero antes, te propongo un trato..." 
         sleep 4
         echo -e "Si este script hace que tus juegos funcionen mejor, ve a \e]8;;https://youtube.com/@EmuTesting?si=-PW83qSOo2b_VFZH\ami canal de YouTube\e]8;;\a y hazmelo saber suscribiendote \U1F911"
         sleep 4
-        echo -e "De hecho, tengo un video jugando a Resident Evil Village usando este script, claro. Si quieres verlo, está acá"
+        echo -e "De hecho, tengo un video jugando a Resident Evil Village usando este script, claro. Si quieres verlo, estÃ¡ acÃ¡"
         sleep 4
         echo -e "Eso es todo! Adios! \U1FAE1"
         touch storage/downloads/already-seen
         sleep 4
-        echo -e "Este mensaje se autodestruirá! CORRE! \U1F4A3"
+        echo -e "Este mensaje se autodestruirÃ¡! CORRE! \U1F4A3"
 fi
 

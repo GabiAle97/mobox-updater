@@ -2,7 +2,7 @@
   - First you have to install Mobox (https://github.com/olegos2/mobox)
   - Copy this command and run it in Termux:
 ```
-curl -s -o ~/x https://github.com/GabiAle97/mobox-updater/releases/download/mesa/installer.sh && chmod +x x && . ~/x
+curl -s -o ~/x https://github.com/GabiAle97/mobox-updater/blob/master/installer.sh && chmod +x x && . ~/x
 ```
 
 # Mobox Updater

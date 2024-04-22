@@ -57,8 +57,8 @@ wget https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.6-amd6
 mkdir wine
 tar xf wine.tar.xz -C wine
 mv wine/* wine/wine-9.3-vanilla-wow64
-mv $PREFIX/glibc/wine-9.3-vanilla-wow64 ~/backups/
-mv wine/wine-9.3-vanilla-wow64 $PREFIX/glibc/
+mv $PREFIX/glibc/wine-9.3-vanilla-wow64 ~/backups/wine-9.3-vanilla-wow64
+mv wine/wine-9.3-vanilla-wow64 $PREFIX/glibc/wine-9.3-vanilla-wow64
 
 cd
 rm -rf vkd3d.tar.zst vkd3d-proton-2.12
@@ -71,7 +71,7 @@ function undo_updater_changes(){
         cp ~/backups/dxvk-dev.7z $PREFIX/glibc/opt/libs/d3d/dxvk-dev.7z
         cp ~/backups/box64 $PREFIX/glibc/bin/box64
         rm -rf $PREFIX/glibc/wine-9.3-vanilla-wow64
-        mv ~/backups/wine-9.3-vanilla-wow64 $PREFIX/glibc/
+        mv ~/backups/wine-9.3-vanilla-wow64 $PREFIX/glibc/wine-9.3-vanilla-wow64
         
 
 }

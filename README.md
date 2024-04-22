@@ -35,13 +35,14 @@ Script to update:
   - 12GB RAM
   - SD 888+
   - Android 13 (NO CUSTOM ROM TESTED)
-  - Mobox with default Wine 9.3
+  - Mobox with custom wine 9.6
 ## Gameplay
   - Resident Evil Village:
+  https://youtu.be/ZzCHjD8ZwOY?si=ztS1TATPL0RNKXRo
   
 ## Thanks to:
   - Ilya (https://github.com/Ilya114) for Box64 build
-  - Airidosas (https://github.com/airidosas252) for Turnip
+  - Airidosas (https://github.com/airidosas252) for Turnip and Wine 9.6
   - HansKristian (https://github.com/HansKristian-Work) for VKD3D
   - Doitsujin (https://github.com/doitsujin) for DXVK
   - A Z (https://github.com/ahmad1abbadi) for some ideas from DarkOS

@@ -12,7 +12,9 @@ cp $PREFIX/etc/termux-login.sh ~/backups
 
 echo "export MANGOHUD=1" >> $PREFIX/etc/termux-login.sh
 echo "export MANGOHUD_CONFIG=engine_version,ram,vulkan_driver" >> $PREFIX/etc/termux-login.sh
-echo "su -c setenforce 0 &>/dev/null" >> $PREFIX/etc/termux-login.sh
+if [ $(su -c id -u &>/dev/null) ]; then 
+        echo "su -c setenforce 0 &>/dev/null" >> $PREFIX/etc/termux-login.sh
+fi
 echo "export BOX64_IGNOREINT3=0" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_FUTEX_WAITV=1" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_DYNAREC_DIV0=1" >> $PREFIX/etc/termux-login.sh
@@ -68,6 +70,10 @@ function undo_updater_changes(){
         cp ~/backups/turnip-v6.5.7z $PREFIX/glibc/opt/libs/mesa/turnip-v6.5.7z
         cp ~/backups/dxvk-dev.7z $PREFIX/glibc/opt/libs/d3d/dxvk-dev.7z
         cp ~/backups/box64 $PREFIX/glibc/bin/box64
+        rm -rf $PREFIX/glibc/wine-9.3-vanilla-wow64
+        mv ~/backups/wine-9.3-vanilla-wow64 $PREFIX/glibc/
+        
+
 }
 
 if [ ! -f storage/downloads/already-seen ]; then

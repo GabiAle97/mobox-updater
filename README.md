@@ -25,6 +25,7 @@ Script to update:
 - turnip to 24.1.0 18/APRIL/24 build (turnip v6.5 is installing this version now)
 - dxvk to 2.3.1 (dxvk-dev is installing this version now)
 - box64 to 18/APRIL/24 build
+- Wine 9.6 (Replaces Wine 9.3 installed by default)
 
 # FUNCTIONALITY TEST
 

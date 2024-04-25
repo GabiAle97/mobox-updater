@@ -2,7 +2,9 @@
 
 apt update -y
 apt install -y glibc-repo
-apt install -y mangohud-glibc
+apt install -y mangohud-glibc <<-EOF
+        y
+EOF
 apt install -y libxcb*
 apt install -y xorgproto*
 
@@ -41,7 +43,7 @@ mv x86 syswow64
 7z a vkd3d.7z sys*
 cp vkd3d.7z $PREFIX/glibc/opt/libs/d3d/vkd3d.7z
 
-wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/mesa-24.1.0-180424-airidosas.7z -O turnip-v6.5.7z
+wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/mesa-24.1.0-clang-airidosas.7z -O turnip-v6.5.7z
 cp turnip-v6.5.7z $PREFIX/glibc/opt/libs/mesa/turnip-v6.5.7z
 
 wget https://github.com/doitsujin/dxvk/releases/download/v2.3.1/dxvk-2.3.1.tar.gz -O dxvk-dev.tar.gz
@@ -55,7 +57,7 @@ cp dxvk-dev.7z $PREFIX/glibc/opt/libs/d3d/dxvk-dev.7z
 wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/box64-180424 -O box64
 cp box64 $PREFIX/glibc/bin/box64
 
-wget https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.6-amd64-wow64.tar.xz -O wine.tar.xz
+wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/wine-9.7-glibc-wow64.tar.xz -O wine.tar.xz
 mkdir wine
 tar xf wine.tar.xz -C wine
 mv wine/* wine/wine-9.3-vanilla-wow64
@@ -75,6 +77,10 @@ function undo_updater_changes(){
         mv ~/backups/wine-9.3-vanilla-wow64 $PREFIX/glibc/wine-9.3-vanilla-wow64
         
 
+}
+
+function fix-graphic-glitches-turnip(){
+        echo "export TU_DEBUG=nofsdt" > $PREFIX/glibc/opt/default-conf/conf/tu_debug.conf
 }
 
 if [ ! -f storage/downloads/already-seen ]; then
@@ -98,6 +104,9 @@ if [ ! -f storage/downloads/already-seen ]; then
         echo -e "Peeeero hice un backup con los archivos originales para que puedas restaurarlos \xF0\x9F\x98\x80"
         sleep 4
         echo -e "Corriendo \e[1mundo_updater_changes\e[0m deber√≠a volver todo a la normalidad"
+        sleep 4
+        echo -e "Ademas, si tienes problemas gr·ficos con algunos juegos (que es improbable)"
+        echo -e "puedes usar el comando \e[1fix-graphic-glitches-turnip\e[0m para ver si esto lo soluciona"
         sleep 4
         echo -e "De todos modos, puedes avisarme en https://github.com/GabiAle97/mobox-updater/issues para que pueda tomar acciones \xF0\x9F\x98\x80"
         sleep 4

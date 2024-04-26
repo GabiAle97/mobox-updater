@@ -48,7 +48,7 @@ wget https://github.com/doitsujin/dxvk/releases/download/v2.3.1/dxvk-2.3.1.tar.g
 tar xf dxvk-dev.tar.gz
 cd dxvk-2.3.1
 mv x64 system32
-mv x86 syswow64
+mv x32 syswow64
 7z a dxvk-dev.7z sys*
 cp dxvk-dev.7z $PREFIX/glibc/opt/libs/d3d/dxvk-dev.7z
 

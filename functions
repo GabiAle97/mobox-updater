@@ -1,0 +1,14 @@
+function undo_updater_changes(){
+        cd ~/backups
+        cp ~/backups/termux-login.sh $PREFIX/etc/termux-login.sh
+        cp ~/backups/vkd3d.7z $PREFIX/glibc/opt/libs/d3d/vkd3d.7z
+        cp ~/backups/turnip-v6.5.7z $PREFIX/glibc/opt/libs/mesa/turnip-v6.5.7z
+        cp ~/backups/dxvk-dev.7z $PREFIX/glibc/opt/libs/d3d/dxvk-dev.7z
+        cp ~/backups/box64 $PREFIX/glibc/bin/box64
+        rm -rf $PREFIX/glibc/wine-9.3-vanilla-wow64
+        mv ~/backups/wine-9.3-vanilla-wow64 $PREFIX/glibc/wine-9.3-vanilla-wow64
+        cp ~/backups/tu_debug.conf $PREFIX/glibc/opt/default-conf/conf/tu_debug.conf
+        cp ~/backups/tu_debug.conf.nod $PREFIX/glibc/opt/conf/tu_debug.conf
+        
+
+}

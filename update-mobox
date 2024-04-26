@@ -16,6 +16,8 @@ if [ ! -e backups ]; then
         cp $PREFIX/glibc/opt/libs/d3d/dxvk-dev.7z ~/backups
         cp $PREFIX/glibc/bin/box64 ~/backups
         mv $PREFIX/glibc/wine-9.3-vanilla-wow64 ~/backups/wine-9.3-vanilla-wow64
+        cp $PREFIX/glibc/opt/default-conf/conf/tu_debug.conf ~/backups
+        cp $PREFIX/glibc/opt/conf/tu_debug.conf ~/backups/tu_debug.conf.nod
 fi
 
 echo "export MANGOHUD=1" >> $PREFIX/etc/termux-login.sh
@@ -25,15 +27,19 @@ if [ $(su -c id -u &>/dev/null) ]; then
 fi
 echo "export BOX64_IGNOREINT3=0" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_FUTEX_WAITV=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_DYNAREC_DIV0=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_CEFDISABLEGPUCOMPOSITOR=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_CEFDISABLEGPU=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_MALLOC_HACK=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_RESERVE_HIGH=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_SSE_FLUSHTO0=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_SYNC_ROUNDING=1" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_DYNAREC_DIV0=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_CEFDISABLEGPUCOMPOSITOR=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_CEFDISABLEGPU=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_MALLOC_HACK=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_RESERVE_HIGH=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_SSE_FLUSHTO0=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_SYNC_ROUNDING=0" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_DYNAREC_WAIT=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_X87_NO80BITS=1" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_X87_NO80BITS=0" >> $PREFIX/etc/termux-login.sh
+echo "export TU_DEBUG=nofsdt" > $PREFIX/glibc/opt/default-conf/conf/tu_debug.conf
+echo "export TU_DEBUG=nofsdt" > $PREFIX/glibc/opt/conf/tu_debug.conf
+
+echo ". ~/functions" > $PREFIX/etc/termux-login.sh
 
 wget https://github.com/HansKristian-Work/vkd3d-proton/releases/download/v2.12/vkd3d-proton-2.12.tar.zst -O vkd3d.tar.zst
 tar xf vkd3d.tar.zst
@@ -65,23 +71,6 @@ mv wine/wine-9.3-vanilla-wow64 $PREFIX/glibc/wine-9.3-vanilla-wow64
 
 cd
 rm -rf vkd3d.tar.zst vkd3d-proton-2.12
-
-function undo_updater_changes(){
-        cd ~/backups
-        cp ~/backups/termux-login.sh $PREFIX/etc/termux-login.sh
-        cp ~/backups/vkd3d.7z $PREFIX/glibc/opt/libs/d3d/vkd3d.7z
-        cp ~/backups/turnip-v6.5.7z $PREFIX/glibc/opt/libs/mesa/turnip-v6.5.7z
-        cp ~/backups/dxvk-dev.7z $PREFIX/glibc/opt/libs/d3d/dxvk-dev.7z
-        cp ~/backups/box64 $PREFIX/glibc/bin/box64
-        rm -rf $PREFIX/glibc/wine-9.3-vanilla-wow64
-        mv ~/backups/wine-9.3-vanilla-wow64 $PREFIX/glibc/wine-9.3-vanilla-wow64
-        
-
-}
-
-function fix-graphic-glitches-turnip(){
-        echo "export TU_DEBUG=nofsdt" > $PREFIX/glibc/opt/default-conf/conf/tu_debug.conf
-}
 
 if [ ! -f storage/downloads/already-seen ]; then
         clear

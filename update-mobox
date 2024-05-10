@@ -53,11 +53,10 @@ mv x32 syswow64
 7z a dxvk-dev.7z sys*
 cp dxvk-dev.7z $PREFIX/glibc/opt/libs/d3d/dxvk-dev.7z
 
-wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/box64.zip -O box64.zip
-unzip box64
-cp box64 $PREFIX/glibc/bin/box64
+wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/box64-100524 -O box64
+mv box64 $PREFIX/glibc/bin/box64
 
-wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/wine-9.8-glibc-wow64.tar.xz -O wine.tar.xz
+wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/wine-9.8-glibc-staging-wow64.tar.xz -O wine.tar.xz
 mkdir wine
 tar xf wine.tar.xz -C wine
 mv wine/* wine/wine-9.3-vanilla-wow64

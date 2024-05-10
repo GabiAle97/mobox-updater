@@ -5,6 +5,7 @@ apt install -y glibc-repo
 apt install -y mangohud-glibc
 apt install -y libxcb*
 apt install -y xorgproto*
+apt install -y unzip
 
 if [ ! -e backups ]; then
         mkdir backups
@@ -23,15 +24,15 @@ if [ $(su -c id -u &>/dev/null) ]; then
 fi
 echo "export BOX64_IGNOREINT3=0" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_FUTEX_WAITV=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_DYNAREC_DIV0=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_CEFDISABLEGPUCOMPOSITOR=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_CEFDISABLEGPU=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_MALLOC_HACK=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_RESERVE_HIGH=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_SSE_FLUSHTO0=1" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_DYNAREC_DIV0=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_CEFDISABLEGPUCOMPOSITOR=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_CEFDISABLEGPU=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_MALLOC_HACK=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_RESERVE_HIGH=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_SSE_FLUSHTO0=" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_SYNC_ROUNDING=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_DYNAREC_WAIT=1" >> $PREFIX/etc/termux-login.sh
-echo "export BOX64_X87_NO80BITS=1" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_DYNAREC_WAIT=0" >> $PREFIX/etc/termux-login.sh
+echo "export BOX64_X87_NO80BITS=0" >> $PREFIX/etc/termux-login.sh
 
 wget https://github.com/HansKristian-Work/vkd3d-proton/releases/download/v2.12/vkd3d-proton-2.12.tar.zst -O vkd3d.tar.zst
 tar xf vkd3d.tar.zst
@@ -41,7 +42,7 @@ mv x86 syswow64
 7z a vkd3d.7z sys*
 cp vkd3d.7z $PREFIX/glibc/opt/libs/d3d/vkd3d.7z
 
-wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/mesa-24.1.0-180424-airidosas.7z -O turnip-v6.5.7z
+wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/mesa-24.1.0-clang-airidosas.7z -O turnip-v6.5.7z
 cp turnip-v6.5.7z $PREFIX/glibc/opt/libs/mesa/turnip-v6.5.7z
 
 wget https://github.com/doitsujin/dxvk/releases/download/v2.3.1/dxvk-2.3.1.tar.gz -O dxvk-dev.tar.gz
@@ -52,10 +53,11 @@ mv x32 syswow64
 7z a dxvk-dev.7z sys*
 cp dxvk-dev.7z $PREFIX/glibc/opt/libs/d3d/dxvk-dev.7z
 
-wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/box64-180424 -O box64
+wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/box64.zip -O box64.zip
+unzip box64
 cp box64 $PREFIX/glibc/bin/box64
 
-wget https://github.com/Ilya114/Box64Droid/releases/download/alpha/wine-9.6-amd64-wow64.tar.xz -O wine.tar.xz
+wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/wine-9.8-glibc-wow64.tar.xz -O wine.tar.xz
 mkdir wine
 tar xf wine.tar.xz -C wine
 mv wine/* wine/wine-9.3-vanilla-wow64

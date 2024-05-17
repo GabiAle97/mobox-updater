@@ -19,9 +19,6 @@ fi
 
 echo "export MANGOHUD=1" >> $PREFIX/etc/termux-login.sh
 echo "export MANGOHUD_CONFIG=engine_version,ram,vulkan_driver" >> $PREFIX/etc/termux-login.sh
-if [ $(su -c id -u &>/dev/null) ]; then 
-        echo "su -c setenforce 0 &>/dev/null" >> $PREFIX/etc/termux-login.sh
-fi
 echo "export BOX64_IGNOREINT3=0" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_FUTEX_WAITV=1" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_DYNAREC_DIV0=0" >> $PREFIX/etc/termux-login.sh
@@ -33,16 +30,21 @@ echo "export BOX64_SSE_FLUSHTO0=" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_SYNC_ROUNDING=1" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_DYNAREC_WAIT=0" >> $PREFIX/etc/termux-login.sh
 echo "export BOX64_X87_NO80BITS=0" >> $PREFIX/etc/termux-login.sh
+if [ $(su -c id -u) = 0 ]; then 
+        echo "su -c setenforce 0 &>/dev/null" >> $PREFIX/etc/termux-login.sh
+        echo "su -c ulimit -c unlimited &>/dev/null" >> $PREFIX/etc/termux-login.sh
+fi
+echo "export VK_DRIVER_FILES=\"\$VK_ICD_FILENAMES\"" >> $PREFIX/glibc/opt/default-conf/conf/path.conf
 
-wget https://github.com/HansKristian-Work/vkd3d-proton/releases/download/v2.12/vkd3d-proton-2.12.tar.zst -O vkd3d.tar.zst
-tar xf vkd3d.tar.zst
-cd vkd3d-proton-2.12/
+
+wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/vkd3d.zip -O vkd3d.zip
+unzip vkd3d.zip
 mv x64 system32
 mv x86 syswow64
 7z a vkd3d.7z sys*
 cp vkd3d.7z $PREFIX/glibc/opt/libs/d3d/vkd3d.7z
 
-wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/mesa-24.1.0-clang-airidosas.7z -O turnip-v6.5.7z
+wget https://github.com/GabiAle97/mobox-updater/releases/download/mesa/mesa-24.2.0-horizon.7z -O turnip-v6.5.7z
 cp turnip-v6.5.7z $PREFIX/glibc/opt/libs/mesa/turnip-v6.5.7z
 
 wget https://github.com/doitsujin/dxvk/releases/download/v2.3.1/dxvk-2.3.1.tar.gz -O dxvk-dev.tar.gz

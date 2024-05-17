@@ -7,15 +7,6 @@
 wget https://raw.githubusercontent.com/GabiAle97/mobox-updater/master/update-mobox && chmod +x update-mobox && . ~/update-mobox
 ```
 
-## Horizon-Emu
-  - First install all as default, and create a container (if you don't have one already)
-  - Go to SETTINGS->TERMINAL, paste and run this command:
-```
-curl -OL https://raw.githubusercontent.com/GabiAle97/mobox-updater/master/mf-horizon && chmod +x mf-horizon && ./mf-horizon
-```
-  - Once it finshes, run the container desired, go to "D:/mediafoundation" and launch "install.bat".
-  - FOR RE2, RUN THE CONTAINER WITH **DXVK 1.10.3 ASYNC**
-
 # Mobox Updater
 Script to update:
 - libs (xcb, xproto)
